@@ -8,7 +8,7 @@ var appName = 'app';
 var host = '0.0.0.0';
 var port = '9000';
 
-var plugins = [], outputFile;
+var plugins = ['import-glob' /*'babel-plugin-root-import'*/], outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
@@ -30,9 +30,22 @@ var config = {
       {
         test: /\.css$/, loader: "style-loader!css-loader"
       },
+      // {
+      //   test: /\.scss$/,
+      //   exclude: /node_modules/,
+      //   loaders: ['to-string-loader','style-loader', 'css-loader', 'sass-loader']
+      // },
+      // {
+      //   test: /(\.jsx|\.js)$/,
+      //   loader: ['jsx-loader'],
+      //   exclude: /(node_modules|bower_components)/,
+      //   query: {
+      //     presets: ['es2015']
+      //   }
+      // },
       {
         test: /(\.jsx|\.js)$/,
-        loader: 'babel',
+        loader: ['babel'],
         exclude: /(node_modules|bower_components)/,
         query: {
           presets: ['react', 'es2015']

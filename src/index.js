@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Component from './Component';
 
-// import { textfield } from 'material-components-web'
+import { textfield } from 'material-components-web'
 
 
 window.onload = () => {
