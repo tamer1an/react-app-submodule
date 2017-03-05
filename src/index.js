@@ -1,9 +1,9 @@
-// import '../node_modules/material-components-web/dist/material-components-web.css'
+import '../node_modules/material-components-web/dist/material-components-web.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Component from './Component';
 
-// import { textfield } from '../node_modules/material-components-web/dist/material-components-web'
+// import { textfield } from 'material-components-web'
 
 
 window.onload = () => {

@@ -4,7 +4,9 @@
   "description": "React webpack starter template",
   "main": "lib/index.js",
   "dependencies": {
-    "material-components-web": "^0.5.0"
+    "css-loader": "^0.26.2",
+    "material-components-web": "^0.5.0",
+    "style-loader": "^0.13.2"
   },
   "author": {
     "name": "Krasimir Tsonev",
