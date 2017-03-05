@@ -1,3 +1,7 @@
+lib/
+./lib
+./lib/
+
 # Build ...
 node_modules
 npm-debug.log
