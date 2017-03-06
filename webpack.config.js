@@ -11,7 +11,9 @@ var port = '9000';
 var plugins = [/*'import-glob' /*'babel-plugin-root-import'*/], outputFile;
 
 if (env === 'build') {
+  outputFile = appName + '.min.js';
   plugins.push(new UglifyJsPlugin({ minimize: true }));
+} else if (env === 'my')  {
   outputFile = appName + '.min.js';
 } else {
   outputFile = appName + '.js';

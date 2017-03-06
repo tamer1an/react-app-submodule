@@ -6,7 +6,12 @@ var Component = React.createClass({
       this.props.onRender();
     }
     return (
-      <h2 className='mdc-typography--display2'>Hello world</h2>
+      <div>
+        <h2 className='mdc-typography--display2'>Hello world</h2>
+        <button className='mdc-button'>
+          Flat button
+        </button>
+      </div>
     );
   },
   propTypes: {

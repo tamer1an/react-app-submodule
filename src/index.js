@@ -3,10 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Component from './Component';
 
-// import { textfield } from 'material-components-web'
-// import { MDCCheckboxFoundation } from '@material/checkbox'
-// <MDCCheckboxFoundation />
-
 window.onload = () => {
   ReactDOM.render(
     <div>
@@ -15,3 +11,16 @@ window.onload = () => {
     document.querySelector('#container')
   );
 };
+
+// import { textfield } from 'material-components-web';
+
+// import * as mdc from 'material-components-web';
+// const checkbox = new mdc.checkbox.MDCCheckbox();
+
+// window.test = checkbox;
+// console.log('testing app...')
+
+// const textfield = new textfield();
+
+// import { MDCCheckboxFoundation } from '@material/checkbox'
+// <MDCCheckboxFoundation />
