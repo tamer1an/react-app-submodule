@@ -8,7 +8,7 @@ var appName = 'app';
 var host = '0.0.0.0';
 var port = '9000';
 
-var plugins = ['import-glob' /*'babel-plugin-root-import'*/], outputFile;
+var plugins = [/*'import-glob' /*'babel-plugin-root-import'*/], outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
@@ -60,6 +60,11 @@ var config = {
   },
   resolve: {
     root: path.resolve('./src'),
+    // modules: [
+    //   "node_modules",
+    //   path.resolve('./src')
+    //   // path.resolve(__dirname, "app")
+    // ],
     extensions: ['', '.js', '.jsx', '.css']
   },
   plugins: plugins
