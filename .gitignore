@@ -2,6 +2,8 @@ lib/
 ./lib
 ./lib/
 
+src/auth.js
+
 # Build ...
 node_modules
 npm-debug.log
