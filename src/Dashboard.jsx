@@ -3,7 +3,10 @@ import Git from 'GithubInterface';
 
 let Dashboard = React.createClass({
   getInitialState() {
-    return  { git: new Git };
+    let git = new Git();
+    git.listStarredRepos(git.getUser());
+
+    return  { git };
   },
 
   render () {
