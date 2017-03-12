@@ -1,31 +1,30 @@
+/* eslint no-unused-vars: 0 */
+/* eslint no-use-before-define: 0 */
 import GitHub from 'github-api';
 import { username, password } from 'auth';
 
 class GithubInterface {
 
-  static newGit(username = username, password = password) {
+  static newGit(username = username, password = password, baseUrl = 'https://api.github.com') {
     return new GitHub({
       username,
-      password,
-      /* also acceptable:
-       token: 'MY_OAUTH_TOKEN'
-       */
-    });
+      password
+    }, baseUrl);
   }
 
   constructor(config = {}) {
-    let gh = (config.username && config.password)
-      ? this.setGit(GithubInterface.newGit(config.username, config.password))
-      : this.setGit();
+    let gh = (config.username && config.password) ?
+      this.setGit(GithubInterface.newGit(config.username, config.password)) :
+      this.setGit();
 
     return {
       instance: this,
-      gh,
+      gh
     };
   }
 
   getGit() {
-   return this._gh;
+    return this._gh;
   }
 
   setGit(gh = GithubInterface.newGit()) {
@@ -38,10 +37,10 @@ class GithubInterface {
   }
 
   listStarredRepos(user) {
-    user.listStarredRepos(function(err, repos) {
+    user.listStarredRepos(function (err, repos) {
       // look at all the starred repos!
 
-      console.log('THE REPOS', repos.slice(1,6));
+      console.log('THE REPOS', repos.slice(1, 6));
     });
   }
 }

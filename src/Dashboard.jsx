@@ -4,12 +4,13 @@ import Git from 'GithubInterface';
 let Dashboard = React.createClass({
   getInitialState() {
     let git = new Git().instance;
+
     git.listStarredRepos(git.getUser());
 
-    return  { git };
+    return { git };
   },
 
-  render () {
+  render() {
     if (this.props.onRender) {
       this.props.onRender();
     }
