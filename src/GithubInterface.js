@@ -13,19 +13,14 @@ class GithubInterface {
     });
   }
 
-  constructor(config) {
-    function run(config = {}) {
-      console.log(this)
-      return (config.username && config.password)
-        ? this.setGit(
-          GithubInterface.newGit(config.username, config.password)
-          )
-        : this.setGit();
-    }
+  constructor(config = {}) {
+    let gh = (config.username && config.password)
+      ? this.setGit(GithubInterface.newGit(config.username, config.password))
+      : this.setGit();
 
     return {
       instance: this,
-      gh: run(config),
+      gh,
     };
   }
 
