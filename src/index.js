@@ -1,12 +1,12 @@
 import '../node_modules/material-components-web/dist/material-components-web.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Component from './Component';
+import Dashboard from './Dashboard';
 
 window.onload = () => {
   ReactDOM.render(
     <div>
-      <Component />
+      <Dashboard />
     </div>,
     document.querySelector('#container')
   );

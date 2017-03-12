@@ -1,14 +1,14 @@
-import Component from '../src/Component.jsx';
+import Component from '../src/Dashboard.jsx';
 import TestUtils from 'react-addons-test-utils';
 import React from 'react';
 
 var component;
 var spy = sinon.spy();
 
-describe('Given an instance of the Component', () => {
+describe('Given an instance of the Dashboard', () => {
   describe('when we render the component', () => {
     before(() => {
-      component = TestUtils.renderIntoDocument(<Component onRender={ spy } />);
+      component = TestUtils.renderIntoDocument(<Dashboard onRender={ spy } />);
     });
     it('should render a paragraph', () => {
       var paragraph = TestUtils.scryRenderedDOMComponentsWithTag(component, 'p');
