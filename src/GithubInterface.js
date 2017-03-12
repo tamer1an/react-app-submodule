@@ -1,10 +1,10 @@
 /* eslint no-unused-vars: 0 */
-/* eslint no-use-before-define: 0 */
 import GitHub from 'github-api';
 import { username, password } from 'auth';
 
 class GithubInterface {
 
+/* eslint no-use-before-define: 0 */
   static newGit(username = username, password = password, baseUrl = 'https://api.github.com') {
     return new GitHub({
       username,
@@ -36,12 +36,9 @@ class GithubInterface {
     return this._gh.getUser(user);
   }
 
-  listStarredRepos(user) {
-    user.listStarredRepos(function (err, repos) {
-      // look at all the starred repos!
-
-      console.log('THE REPOS', repos.slice(1, 6));
-    });
+  listStarredRepos(user, callback = (err, repos) => console.log('*', repos.slice(1, 6))) {
+    /* eslint handle-callback-err: 0 */
+    user.listStarredRepos(callback);
   }
 }
 
