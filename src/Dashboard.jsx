@@ -1,11 +1,17 @@
 import React from 'react';
 import Git from 'GithubInterface';
+import { username, password } from 'auth';
 
 let Dashboard = React.createClass({
   getInitialState() {
-    let git = new Git().instance;
+    let { instance, git } = new Git({username, password});
 
-    git.listStarredRepos(git.getUser());
+    // instance.listStarredRepos();
+    // instance.getEmails()
+    // instance.listRepos();
+    // instance.listNotifications()
+
+    console.log(instance.listIssues());
 
     return { git };
   },
