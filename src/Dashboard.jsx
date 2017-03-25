@@ -1,6 +1,7 @@
 import React from 'react';
 import Git from 'GithubInterface';
 import { username, password } from 'auth';
+import Rx from 'rxjs/Rx';
 
 let Dashboard = React.createClass({
   getInitialState() {
