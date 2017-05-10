@@ -27,31 +27,24 @@ let Dashboard = React.createClass({
     return {
       git,
       instance,
-      showToolPanel: false,
       columnDefs: [
-        // {
-        //   headerName: "Athlete Details",
-        //   children: [
-        //     {headerName: "Athlete", field: "athlete", width: 150, filter: 'text'},
-        //     {headerName: "Age", field: "age", width: 90, filter: 'number'},
-        //     {headerName: "Country", field: "country", width: 120}
-        //   ]
-        // },
-        // {
-        //   headerName: "Sports Results",
-        //   children: [
-        //     {headerName: "Sport", field: "sport", width: 110},
-        //     {headerName: "Total", columnGroupShow: 'closed', field: "total", width: 100, filter: 'number'},
-        //     {headerName: "Gold", columnGroupShow: 'open', field: "gold", width: 100, filter: 'number'},
-        //     {headerName: "Silver", columnGroupShow: 'open', field: "silver", width: 100, filter: 'number'},
-        //     {headerName: "Bronze", columnGroupShow: 'open', field: "bronze", width: 100, filter: 'number'}
-        //   ]
-        // },
-        {headerName: "Id", field: "id", width: 100},
+        {headerName: "Id", field: "id", width: 100, filter: 'number'},
         {headerName: "Reason", field: "reason", width: 100},
         {headerName: "Last_read_at", field: "last_read_at", width: 100},
-        {headerName: "Repository", field: "repository", width: 100},
-        {headerName: "Subject", field: "subject", width: 100},
+        {headerName: "Repository",
+          children: [
+            {headerName: "Description", field: "repository.description", width: 150, filter: 'text'},
+            {headerName: "compare_url", field: "repository.compare_url", width: 90, columnGroupShow: 'closed'},
+          ]
+        }, {
+          headerName: "Subject",
+          children: [
+            {headerName: "Latest_comment_url", columnGroupShow: 'open', field: "subject.latest_comment_url", width: 150},
+            {headerName: "Title", field: "subject.title", columnGroupShow: 'closed', width: 90},
+            {headerName: "Type", field: "subject.type", width: 120},
+            {headerName: "Url", field: "subject.url", width: 120}
+          ]
+        },
         {headerName: "Subscription_url", field: "subscription_url", width: 100},
         {headerName: "Unread", field: "unread", width: 100},
         {headerName: "Updated_at", field: "updated_at", width: 100},
@@ -223,11 +216,11 @@ let Dashboard = React.createClass({
   },
 
   onCellClicked: function () {
-    console.log('cell');
+    console.log('cell', arguments);
   },
 
   onRowSelected: function () {
-    console.log('rowSel');
+    console.log('rowSel', arguments);
   },
 
   render() {
@@ -251,7 +244,6 @@ let Dashboard = React.createClass({
           onCellClicked={this.onCellClicked}
 
           // binding to properties within React State or Props
-          showToolPanel={this.state.showToolPanel}
           quickFilterText={this.state.quickFilterText}
 
           // column definitions and row data are immutable, the grid
