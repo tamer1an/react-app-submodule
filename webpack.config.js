@@ -20,6 +20,9 @@ if (env === 'build') {
 }
 
 var config = {
+  // alias: {
+  //   "ag-grid-root" : __dirname + "/node_modules/ag-grid"
+  // },
   entry: './src/index.js',
   devtool: 'source-map',
   output: {

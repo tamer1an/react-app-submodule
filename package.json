@@ -4,6 +4,7 @@
   "description": "React webpack starter template",
   "main": "lib/index.js",
   "dependencies": {
+    "ag-grid-react": "^9.1.0",
     "babel-loader": "^6.3.2",
     "css-loader": "^0.26.2",
     "github-api": "^3.0.0",

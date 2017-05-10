@@ -61,7 +61,7 @@ class GithubInterface {
     return this.getGit().getIssues(user, repo);
   }
 
-  listNotifications(pthen = (data) => console.log('*', data.data)) {
+  listNotifications(pthen = (data) => data.data) {
     return this.getUser().listNotifications().then(pthen);
   }
 }
