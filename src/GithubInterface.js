@@ -17,7 +17,7 @@ class GithubInterface {
       { error: 'Error auth' };
 
     return {
-      instance: this,
+      clone: this,
       gh
     };
   }

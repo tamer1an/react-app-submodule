@@ -8,25 +8,45 @@ import { username, password } from 'auth';
 
 let Dashboard = React.createClass({
   getInitialState() {
-    let { instance, git } = new Git({username, password});
+    let { clone, gh } = new Git({username, password});
+    let myUser = clone.getUser();
 
     // instance.listStarredRepos();
     // instance.getEmails()
     // instance.listRepos();
     // instance.listNotifications()
-
     // console.log(instance.listIssues());
-
     // var test = instance.listNotifications();
     // console.log(test);
 
-    instance.listNotifications().then(d => {
+    clone.listNotifications().then(d => {
       console.log(d);
-    })
+    });
+
+    console.log('myUser->', myUser, gh, clone);
+    console.log('auth->', myUser.__apiBase, myUser.__authorizationHeader);
+
+    // fetch(myUser.__apiBase)
+
+    // clone.getUser(user)
+    // /search/code?q=addClass+in:file+language:js+repo:jquery/jquery
+
+    // clone.getGit().search('/search/code?q=addClass+in:file+language:js+repo:jquery/jquery').then(d => {
+    //   console.log(d);
+    // });
+
+    // let tamer1an = clone.getUser();
+
+    // console.log('issues', gh.getIssues(tamer1an));
+
+    // tamer1an.listStarredRepos(function(err, repos) {
+    //   // look at all the starred repos!
+    //   console.log('THE REPOS', repos.slice(1,6));
+    // });
 
     return {
-      git,
-      instance,
+      gh,
+      clone,
       columnDefs: [
         {headerName: "Id", field: "id", width: 100, filter: 'number'},
         {headerName: "Reason", field: "reason", width: 100},
@@ -283,3 +303,17 @@ export default Dashboard;
 //   unread,
 //   updated_at,
 //   url,
+
+/* https://api.github.com/issues
+  Accept:application/vnd.github.v3+json
+  Accept-Encoding:gzip, deflate, sdch, br
+  Accept-Language:en-US,en;q=0.8,pl;q=0.6,ru;q=0.4
+  Authorization:Basic dGFtZXIxYW46YW52JHAzdHJpYjMz
+  Cache-Control:no-cache
+  Connection:keep-alive
+  Host:api.github.com
+  Origin:http://localhost:3001
+  Pragma:no-cache
+  Referer:http://localhost:3001/popup.html
+  User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+*/
