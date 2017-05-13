@@ -19,9 +19,9 @@ let Dashboard = React.createClass({
     // var test = instance.listNotifications();
     // console.log(test);
 
-    clone.listNotifications().then(d => {
-      console.log(d);
-    });
+    // clone.listNotifications().then(d => {
+    //   console.log(d);
+    // });
 
     console.log('myUser->', myUser, gh, clone);
     console.log('auth->', myUser.__apiBase, myUser.__authorizationHeader);
@@ -51,30 +51,30 @@ let Dashboard = React.createClass({
         {headerName: "Id", field: "id", width: 100, filter: 'number'},
         {headerName: "Reason", field: "reason", width: 100},
         {headerName: "Last_read_at", field: "last_read_at", width: 100},
-        {headerName: "Repository",
-          children: [
-            {headerName: "Description", field: "repository.description", width: 150, filter: 'text'},
-            {headerName: "compare_url", field: "repository.compare_url", width: 90, columnGroupShow: 'closed'},
-          ]
-        }, {
-          headerName: "Subject",
-          children: [
-            {headerName: "Latest_comment_url", columnGroupShow: 'open', field: "subject.latest_comment_url", width: 150},
-            {headerName: "Title", field: "subject.title", columnGroupShow: 'closed', width: 90},
-            {headerName: "Type", field: "subject.type", width: 120},
-            {headerName: "Url", field: "subject.url", width: 120}
-          ]
-        },
-        {headerName: "Subscription_url", field: "subscription_url", width: 100},
-        {headerName: "Unread", field: "unread", width: 100},
-        {headerName: "Updated_at", field: "updated_at", width: 100},
-        {headerName: "Url", field: "url", width: 100},
+        // {headerName: "Repository",
+        //   children: [
+        //     {headerName: "Description", field: "repository.description", width: 150, filter: 'text'},
+        //     {headerName: "compare_url", field: "repository.compare_url", width: 90, columnGroupShow: 'closed'},
+        //   ]
+        // }, {
+        //   headerName: "Subject",
+        //   children: [
+        //     {headerName: "Latest_comment_url", columnGroupShow: 'open', field: "subject.latest_comment_url", width: 150},
+        //     {headerName: "Title", field: "subject.title", columnGroupShow: 'closed', width: 90},
+        //     {headerName: "Type", field: "subject.type", width: 120},
+        //     {headerName: "Url", field: "subject.url", width: 120}
+        //   ]
+        // },
+        // {headerName: "Subscription_url", field: "subscription_url", width: 100},
+        // {headerName: "Unread", field: "unread", width: 100},
+        // {headerName: "Updated_at", field: "updated_at", width: 100},
+        // {headerName: "Url", field: "url", width: 100},
       ],
       rowData: [
         {
           "id": "169316295",
           "unread": true,
-          "reason": "comment",
+          "reason": "commentcomment commentcommen",
           "updated_at": "2017-05-10T14:40:42Z",
           "last_read_at": null,
           "subject": {
@@ -237,10 +237,36 @@ let Dashboard = React.createClass({
 
   onCellClicked: function () {
     console.log('cell', arguments);
+    // this.api.selectAll();
+    // this.columnApi.setColumnVisible('country', visible);
   },
 
   onRowSelected: function () {
     console.log('rowSel', arguments);
+  },
+
+  onGridReady: function(params) {
+    this.api = params.api;
+    this.columnApi = params.columnApi;
+
+    window.addEventListener('resize', () => {
+      this.sizeToFit();
+      this.columnApi.setColumnWidth(this.columnApi.getAllColumns()[0],500);
+    });
+  },
+
+  sizeToFit: function(res) {
+    console.log(res);
+    this.api.sizeColumnsToFit();
+  },
+
+  autoSizeAll: function() {
+    let allColumnIds = [];
+    this.state.columnDefs.forEach( function(columnDef) {
+      allColumnIds.push(columnDef.field);
+    });
+
+    this.columnApi.autoSizeColumns([allColumnIds[1]]);
   },
 
   render() {
@@ -258,25 +284,32 @@ let Dashboard = React.createClass({
     }
     return (
       <div style={{ height: '700px' }} className="ag-fresh">
-        <AgGridReact
-          // listen for events with React callbacks
-          onRowSelected={this.onRowSelected}
-          onCellClicked={this.onCellClicked}
+        <div style={{ height: 'l0%' }}>
+          <button onClick={this.sizeToFit}>Size to Fit</button>
+          <button onClick={this.autoSizeAll}>Auto-Size All</button>
+        </div>
+        <div style={{ height: '90%' }}>
+          <AgGridReact
+            // listen for events with React callbacks
+            onRowSelected={this.onRowSelected}
+            onCellClicked={this.onCellClicked}
+            onGridReady={this.onGridReady}
+            // binding to properties within React State or Props
+            quickFilterText={this.state.quickFilterText}
 
-          // binding to properties within React State or Props
-          quickFilterText={this.state.quickFilterText}
+            // column definitions and row data are immutable, the grid
+            // will update when these lists change
+            columnDefs={this.state.columnDefs}
+            rowData={this.state.rowData}
 
-          // column definitions and row data are immutable, the grid
-          // will update when these lists change
-          columnDefs={this.state.columnDefs}
-          rowData={this.state.rowData}
-
-          // or provide props the old way with no binding
-          rowSelection="multiple"
-          enableSorting="true"
-          enableFilter="true"
-          rowHeight="22"
-        />
+            // or provide props the old way with no binding
+            rowSelection="multiple"
+            enableSorting="true"
+            enableFilter="true"
+            rowHeight="22"
+            enableColResize="true"
+          />
+        </div>
       </div>
     );
   },
