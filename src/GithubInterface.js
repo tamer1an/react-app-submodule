@@ -3,7 +3,7 @@ import GitHub from 'github-api';
 const local = { log: () => {} };
 
 class GithubInterface {
-  static newGit(username, password, baseUrl = 'https://github.com/api/v3') {
+  static newGit(username, password, baseUrl = 'https://api.github.com') {
     return new GitHub({
       username,
       password,
