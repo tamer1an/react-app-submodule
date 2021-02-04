@@ -69,9 +69,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
-
 PREPARE QUESTIONS:
-1) Base principles of OOP
-2) Acceess type to property and methods in OOP
-3) Base principles of Functional programming 
+
+1. Base principles of OOP
+
+- inheritance
+- encapsulation
+- polymorphism
+
+2. Acceess type to property and methods in OOP
+according to the type, properties and methods in oop can be public and private
+properties can be made private by appending _ before the property name or using only getter function (no setter)
+
+3. Base principles of
+   Functional programming
+
+- pure function
+
+bonus:
+
+- curryng functions
+- partial funtion

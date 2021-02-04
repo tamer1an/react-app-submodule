@@ -11,37 +11,47 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>React App</title>
+    <title>New App</title>
 
-
-    <script defer src="script.js">
-      if(confirm('Are you ready?')){
-        alert('go')
-      }
-
-
-      // Тобі треба тут написати код
-      // handle form submission by handling/subscribing to submit event
-    </script>
+    <script defer src="script.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-   <section> 
-    <!-- зробити HTML форму   -->
-    <div id="error"></div>
-<form id="form" action="/" method="GET">
-  <div>
-    <label for="name">Name</label>
-   <input id="name" name="name" type="text" required>
-    </div>
-      <div>
-      <label for="password">Password</label>
-     <input id="password" name="password" type="password" type="password">
-      </div>
-      <button type="submit">Submit</button>
-</form>
-   </section>
+    <section>
+      <!--  1) make submit and read GET variable by javascript after page refreshh
+          2) prevent page refresh after submit with javascript after pagesubmit 
+          3) read about POST form method       
+         -->
+      <div id="error"></div>
+
+      <form id="form" action=" " method="GET">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    <script>
+      let name = document.getElementById("name").value;
+      let password = document.getElementById("password").value;
+
+      if (confirm("Form was submited?")) {
+        alert("name:" + name "password: " + password); // <------ 'name: <NAME VALUE> password <*******&>'
+      }
+      /// create new js variables for
+      // google on how to read GET variable with javascript syntax
+      /// save get values to the js variables
+      // show js variables in alert with text
+
+      // Тобі треба тут написати код
+      // handle form submission by handling/subscribing to submit event
+    </script>
   </body>
 </html>
