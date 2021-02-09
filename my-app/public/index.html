@@ -29,7 +29,7 @@
       <form id="form" action=" " method="GET">
         <div>
           <label for="name">Name</label>
-          <input id="name" name="name" type="text" required />
+          <input id="name" name="name" type="text" />
         </div>
         <div>
           <label for="password">Password</label>
@@ -39,12 +39,37 @@
       </form>
     </section>
     <script>
-      let name = document.getElementById("name").value;
-      let password = document.getElementById("password").value;
+      // http//:localhost:3333/?nametest=Lillia&passwordtest=
 
-      if (confirm("Form was submited?")) {
-        alert("name:" + name "password: " + password); // <------ 'name: <NAME VALUE> password <*******&>'
+      // let name = document.getElementById("name").value;
+      // let password = document.getElementById("password").value;
+
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(
+          /[?&]+([^=&]+)=([^&]*)/gi,
+          function (m, key, value) {
+            vars[key] = value;
+          }
+        );
+        return vars;
       }
+
+      let name = getUrlVars()["name"];
+      let password = getUrlVars()["password"];
+      alert("name:" + name);
+      alert("password: " + password);
+
+      if (form.onsubmit("Form was submited?")) {
+        alert("name:" + name, "password: " + password); // <------ 'name: <NAME VALUE> password <*******&>'
+      }
+
+      // let params = new URL(document.location).searchParams;
+      // let name = params.get("name");
+      // let password = parseInt(params.get("password"));
+
+      //let name = new URLSearchParams(location.search).get("name");
+
       /// create new js variables for
       // google on how to read GET variable with javascript syntax
       /// save get values to the js variables
