@@ -4,18 +4,6 @@ const { readdirSync } = require('fs');
 
 // javascript object destruction 
 
-
-//dz primitive data types are
-
-const x = 121234
-
-const human =  {
-   x: 123543256,
-   run: function(source) {
-    console.log('')
-  }
-}
-
 const getDirectories = (source) =>
   readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
@@ -44,3 +32,41 @@ function askQuestion(query) {
 
 
 // const ans = await askQuestion("Are you sure you want to deploy to PRODUCTION? ");
+
+//dz primitive data types are
+
+const x = 121234
+
+const human =  {
+   x: x,
+   run: function(source) {
+    console.log('')
+  }
+}
+
+
+
+function game() {
+
+    const GAME_NAME = 'Best game';
+
+    function human(name, position = 0) {
+
+        const width = 50; //kg
+
+        const name1 = 'LALA' + GAME_NAME;
+    
+        function walk(steps, height = 160, distance = 1.2) {
+            const result = steps * (height/3) * distance;
+    
+            return result;
+        }
+    
+        // Math.random()
+        const position = walk(10);
+    }
+    
+    human()
+}
+
+game(human(create()))

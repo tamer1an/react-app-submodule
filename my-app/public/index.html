@@ -2,30 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>New App</title>
+    <script>
+      // 1 variant
+      // let params = new URL(document.location).searchParams;
+      // let name = params.get("name");
+      // let password = parseInt(params.get("password"));
+      /* if (confirm("was submited")) {
+              alert("name: " + name);
+              alert("password: " + password);
+            } */
 
-    <script defer src="script.js"></script>
+      // 2 variant
+
+      // let params = new URL(document.location).searchParams;
+      // let name = params.get("name");
+      //let password = parseInt(params.get("password"));
+
+      function MyFunction2() {
+        let parsedUrl = new URL(window.location.href);
+        console.log(parsedUrl.rearchParamns.get("name"));
+      }
+
+      // 3 variant
+      /* function MyFunction3() {
+        let name = new URLSearchParams(location.search).get("name");
+        let password = new URLSearchParams(location.search).get("password");
+        return name, password;
+        console.log("name", "password");
+      }*/
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-
     <section>
-      <!--  1) make submit and read GET variable by javascript after page refreshh
-          2) prevent page refresh after submit with javascript after pagesubmit 
-          3) read about POST form method       
-         -->
-      <div id="error"></div>
-
       <form id="form" action=" " method="GET">
         <div>
           <label for="name">Name</label>
@@ -36,47 +51,9 @@
           <input id="password" name="password" type="password" />
         </div>
         <button type="submit">Submit</button>
+        <button type="submit" onclick="myFunction2()">URL</button>
+        <button type="submit" onclick="myFunction3()">SearchParam</button>
       </form>
     </section>
-    <script>
-      // http//:localhost:3333/?nametest=Lillia&passwordtest=
-
-      // let name = document.getElementById("name").value;
-      // let password = document.getElementById("password").value;
-
-      function getUrlVars() {
-        var vars = {};
-        var parts = window.location.href.replace(
-          /[?&]+([^=&]+)=([^&]*)/gi,
-          function (m, key, value) {
-            vars[key] = value;
-          }
-        );
-        return vars;
-      }
-
-      let name = getUrlVars()["name"];
-      let password = getUrlVars()["password"];
-      alert("name:" + name);
-      alert("password: " + password);
-
-      if (form.onsubmit("Form was submited?")) {
-        alert("name:" + name, "password: " + password); // <------ 'name: <NAME VALUE> password <*******&>'
-      }
-
-      // let params = new URL(document.location).searchParams;
-      // let name = params.get("name");
-      // let password = parseInt(params.get("password"));
-
-      //let name = new URLSearchParams(location.search).get("name");
-
-      /// create new js variables for
-      // google on how to read GET variable with javascript syntax
-      /// save get values to the js variables
-      // show js variables in alert with text
-
-      // Тобі треба тут написати код
-      // handle form submission by handling/subscribing to submit event
-    </script>
   </body>
 </html>
