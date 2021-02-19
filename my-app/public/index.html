@@ -14,29 +14,35 @@
       // let params = new URL(document.location).searchParams;
       // let name = params.get("name");
       // let password = parseInt(params.get("password"));
+
+      //let name = document.getElementById("name").innerHTML;
+      //let password = document.getElementById("password").InnerHTML;
+      // console.log(name.value, password.value);
+
       /* if (confirm("was submited")) {
-              alert("name: " + name);
-              alert("password: " + password);
-            } */
-
+                    alert("name: " + name);
+                    alert("password: " + password);
+                  }
+            */
       // 2 variant
-
-      // let params = new URL(document.location).searchParams;
-      // let name = params.get("name");
-      //let password = parseInt(params.get("password"));
-
-      function MyFunction2() {
-        let parsedUrl = new URL(window.location.href);
-        console.log(parsedUrl.rearchParamns.get("name"));
+      function parseURL() {
+        let name = window.location.search;
+        alert(name);
       }
 
-      // 3 variant
-      /* function MyFunction3() {
-        let name = new URLSearchParams(location.search).get("name");
-        let password = new URLSearchParams(location.search).get("password");
-        return name, password;
-        console.log("name", "password");
-      }*/
+      //3 variant работает странно. чтобы корректно извлечь переменные, нужно нажать два раза submit
+      // после первого клика появляется сразу alert с пустыми полями, а потом уже обновляется url c новыми get переменными
+      // получается, вывод в алерт всегда отстает на 1 шаг от реальной ситуации
+      function myFunction3() {
+        let params = new URLSearchParams(document.location.search);
+        let name = params.get("name");
+        let password = params.get("password");
+
+        if (confirm("was submited")) {
+          alert("name: " + name);
+          alert("password: " + password);
+        }
+      }
     </script>
   </head>
   <body>
@@ -51,7 +57,7 @@
           <input id="password" name="password" type="password" />
         </div>
         <button type="submit">Submit</button>
-        <button type="submit" onclick="myFunction2()">URL</button>
+        <button type="submit" onclick="parseURL()">URL</button>
         <button type="submit" onclick="myFunction3()">SearchParam</button>
       </form>
     </section>
