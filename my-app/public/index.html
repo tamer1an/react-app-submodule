@@ -11,28 +11,31 @@
     <title>New App</title>
     <script>
       // 1 variant
+
       // let params = new URL(document.location).searchParams;
       // let name = params.get("name");
       // let password = parseInt(params.get("password"));
+
+      // let name = document.querySelector("input[name='name']");
+      // let password = document.querySelector("input[password='password']");
 
       //let name = document.getElementById("name").innerHTML;
       //let password = document.getElementById("password").InnerHTML;
       // console.log(name.value, password.value);
 
       /* if (confirm("was submited")) {
-                    alert("name: " + name);
-                    alert("password: " + password);
-                  }
-            */
+        alert("name: " + name);
+        alert("password: " + password);
+      }
+*/
       // 2 variant
       function parseURL() {
         let name = window.location.search;
         alert(name);
       }
 
-      //3 variant работает странно. чтобы корректно извлечь переменные, нужно нажать два раза submit
-      // после первого клика появляется сразу alert с пустыми полями, а потом уже обновляется url c новыми get переменными
-      // получается, вывод в алерт всегда отстает на 1 шаг от реальной ситуации
+      //3 variant
+
       function myFunction3() {
         let params = new URLSearchParams(document.location.search);
         let name = params.get("name");
